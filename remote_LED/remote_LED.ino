@@ -13,7 +13,9 @@ void setup()  {
   Serial.begin(9600);
  
   // Declare outputs:
-  pinMode(fadePin, OUTPUT);
+  pinMode(fadePinR, OUTPUT);
+  pinMode(fadePinG, OUTPUT);
+  pinMode(fadePinB, OUTPUT);
   pinMode(redPin, OUTPUT);
   pinMode(greenPin, OUTPUT);
 } 
@@ -34,13 +36,13 @@ void loop()  {
     if (incomingByte == 'H' && brightness < 255) {
       // Cycle the blue LED from dim to bright
       for (brightness = 0; brightness < 255; brightness += fadeAmount) {
-        analogWrite(fadePin, brightness);
+        analogWrite(fadePinB, brightness);
         delay(30);
       }
     } else if (incomingByte == 'L' && brightness > 0) {
       // Cycle the blue LED from bright to dim
       for (brightness = 255; brightness > 0; brightness -= fadeAmount) {
-        analogWrite(fadePin, brightness);
+        analogWrite(fadePinB, brightness);
         delay(30);
       }
     }
